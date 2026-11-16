@@ -18,8 +18,26 @@ const sites = {
         url: (u) => `https://twitter.com/${u}`,
         errorStatus: 404
     },
+    Instagram: {
+        url: (u) => `https://www.instagram.com/${u}/`,
+        errorStatus: 404
+    },
     TikTok: {
         url: (u) => `https://www.tiktok.com/@${u}`,
+        errorStatus: 404
+    },
+    Facebook: {
+        url: (u) => `https://www.facebook.com/${u}`,
+        errorStatus: 404
+    },
+    Snapchat: {
+        url: (u) => `https://www.snapchat.com/add/${u}`,
+        errorStatus: 404
+    },
+    // Megjegyzés: A Discord nem enged sima direkt profil lekérdezést külső oldalról bot nélkül, 
+    // de ha van szervervagy egyéb, itt a leggyakoribb formátum:
+    Discord_Invite: {
+        url: (u) => `https://discord.gg/${u}`,
         errorStatus: 404
     }
 };
@@ -56,6 +74,5 @@ app.post('/api/check', async (req, res) => {
     res.json(results);
 });
 
-// Fontos: a Render által osztott portot használja, vagy helyi tesztnél a 3000-et
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Szerver fut a ${PORT} porton!`));
